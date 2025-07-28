@@ -1,0 +1,17 @@
+{
+  "name": "qa_wolf_take_home",
+  "version": "1.0.0",
+  "description": "QA Wolf Take Home Assignment",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "Frank Rodriguez",
+  "license": "ISC",
+  "dependencies": {
+    "playwright": "^1.54.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.54.1",
+    "@types/node": "^24.1.0"
+  }
+}
