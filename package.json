@@ -4,7 +4,9 @@
   "description": "QA Wolf Take Home Assignment",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "playwright test",
+    "report": "playwright show-report"
   },
   "keywords": [],
   "author": "Frank Rodriguez",

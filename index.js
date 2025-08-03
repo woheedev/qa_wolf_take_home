@@ -1,11 +1,12 @@
-const { chromium } = require("playwright");
+const { chromium, firefox, webkit } = require("playwright");
 
 // Config for Hacker News page and selectors to scrape
 const CONFIG = {
+  BROWSER: "chromium",
   URL: "https://news.ycombinator.com/newest",
   MAX_ARTICLES: 100,
   HEADLESS: false,
-  TIMEOUT: 10000, // (ms)
+  TIMEOUT: 5000, // (ms)
   SELECTORS: {
     ARTICLE_ROW: "tr.athing.submission",
     RANK: "span.rank",
@@ -40,7 +41,10 @@ async function extractArticleData(row, selectors) {
 // Main function to scrape and validate article sorting
 async function validateArticleSorting(options = {}) {
   const config = { ...CONFIG, ...options };
-  const browser = await chromium.launch({ headless: config.HEADLESS });
+  const browsers = { chromium, firefox, webkit };
+  const browser = await browsers[config.BROWSER].launch({
+    headless: config.HEADLESS,
+  });
   const page = await browser.newPage();
 
   try {
