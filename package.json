@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "QA Wolf Take Home Assignment",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node index.js"
+  },
   "keywords": [],
   "author": "Frank Rodriguez",
   "license": "ISC",
