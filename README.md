@@ -1,55 +1,59 @@
-# 🐺 QA Wolf Take Home Assignment
+# QA Wolf - Hacker News Article Validator
 
-Welcome to the QA Wolf take home assignment for our [QA Engineer](https://www.task-wolf.com/apply-qae) role! We appreciate your interest and look forward to seeing what you come up with.
+A Playwright-based solution for validating article sorting on Hacker News. It scrapes the [Hacker News /newest](https://news.ycombinator.com/newest) page and verifies that the first 100 articles are sorted from newest to oldest. The script is modular and can be easily adapted for other article pages with minimal modifications.
 
-## Instructions
+## Quick Start
 
-This assignment has two questions as outlined below. When you are done, upload your assignment to our [application page](https://www.task-wolf.com/apply-qae):
+### Install dependencies
 
+```bash
+npm install
+```
 
-### Question 1
+### Run the main script
 
-In this assignment, you will create a script on [Hacker News](https://news.ycombinator.com/) using JavaScript and Microsoft's [Playwright](https://playwright.dev/) framework. 
+```bash
+node index.js
+```
 
-1. Install node modules by running `npm i`.
+Launches a browser window and displays the scraping process in real-time.
 
-2. Edit the `index.js` file in this project to go to [Hacker News/newest](https://news.ycombinator.com/newest) and validate that EXACTLY the first 100 articles are sorted from newest to oldest. You can run your script with the `node index.js` command.
+### Run the test suite
 
-Note that you are welcome to update Playwright or install other packages as you see fit, however you must utilize Playwright in this assignment.
+```bash
+npm test
+```
 
-### Question 2
+Runs headless tests across Chromium, Firefox, and WebKit for multiple pages.
 
-Why do you want to work at QA Wolf? Please record a short, ~2 min video using [Loom](https://www.loom.com/) that includes:
+### Open test report
 
-1. Your answer 
+```bash
+npm run report
+```
 
-2. A walk-through demonstration of your code, showing a successful execution
+Opens the most recent test report in your default browser.
 
-The answer and walkthrough should be combined into *one* video, and must be recorded using Loom as the submission page only accepts Loom links.
+## Features
 
-## Frequently Asked Questions
+- **`index.js`** – Main scraping script with multi-browser support
+- **`tests/hacker-news.test.js`** – Test suite covering success, failure, and error cases
+- **Cross-browser validation** on Chromium, Firefox, and WebKit
+- **Modular configuration** for URLs, browsers, and selectors
 
-### What is your hiring process? When will I hear about next steps?
+## Configuration
 
-This take home assignment is the first step in our hiring process, followed by a final round interview if it goes well. **We review every take home assignment submission and promise to get back to you either way within two weeks (usually sooner).** The only caveat is if we are out of the office, in which case we will get back to you when we return. If it has been more than two weeks and you have not heard from us, please do follow up.
+Modify the `CONFIG` object in `index.js`:
 
-The final round interview is a 2-hour technical work session that reflects what it is like to work here. We provide a $150 stipend for your time for the final round interview regardless of how it goes. After that, there may be a short chat with our director about your experience and the role.
+```javascript
+const CONFIG = {
+  BROWSER: "chromium", // Options: chromium, firefox, or webkit
+  URL: "https://news.ycombinator.com/newest",
+  MAX_ARTICLES: 100, // Max articles to scrape
+  // ...
+};
+```
 
-Our hiring process is rolling where we review candidates until we have filled our openings. If there are no openings left, we will keep your contact information on file and reach out when we are hiring again.
+--------------------------------------------------------------------------------
 
-### Having trouble uploading your assignment?
-Be sure to delete your `node_modules` file, then zip your assignment folder prior to upload. 
-
-### How do you decide who to hire?
-
-We evaluate candidates based on three criteria:
-
-- Technical ability (as demonstrated in the take home and final round)
-- Customer service orientation (as this role is customer facing)
-- Alignment with our mission and values (captured [here](https://qawolf.notion.site/Mission-and-Values-859c7d0411ba41349e1b318f4e7abc8f))
-
-This means whether we hire you is based on how you do during our interview process, not on your previous experience (or lack thereof). Note that you will also need to pass a background check to work here as our customers require this.
-
-### How can I help my application stand out?
-
-We've found that our best hires have been the most enthusiastic throughout our process. If you are very excited about working here, please feel free to go above and beyond on this assignment.
+_QA Wolf Take Home Assignment by Frank Rodriguez_
